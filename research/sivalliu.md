@@ -29,3 +29,9 @@ The source XAPK is available in the [source-sivalliu-3.2.10 release](https://git
 ## Browser tests (2026-11-25)
 
 The user reports that GET requests to all three candidate URLs return `{"error":"The method specified in the request is not valid","code":405}`. The actual HTTP status and Allow header were not captured. POST is a hypothesis, not a confirmed method. Establish the read-only transport request contract from static code before testing.
+
+## Research scope decision (2026-11-25)
+
+Prioritize `transport-network` for static route, stop and shape data and `show-buses` for public realtime vehicle information and potential observed headways. `find-route` is out of scope: journey planning will be handled by OpenTripPlanner using our GTFS feed and OpenStreetMap. Do not investigate or call the journey-planning endpoint further. Payment functionality remains excluded.
+
+The initial Blutter analysis (run 45646676734) succeeded. The follow-up run 45647292820 is still in progress at the time of this update; its detailed request evidence has not yet been reviewed.
