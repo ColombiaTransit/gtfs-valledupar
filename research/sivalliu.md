@@ -24,4 +24,8 @@ Candidate fields: route_id, route_short_name, stop_name, start_stop, end_stop, t
 4. Validate route, stop and shape coverage; investigate schedules and headways.
 5. Keep measured headways distinct from official service frequencies.
 
-No source APK has been uploaded to this repository, no API responses have been validated, and no GTFS feed has been generated. Preliminary findings are not a confirmed API contract.
+The source XAPK is available in the [source-sivalliu-3.2.10 release](https://github.com/ColombiaTransit/gtfs-valledupar/releases/tag/source-sivalliu-3.2.10). GitHub reports 43,644,788 bytes and the SHA-256 listed above. No successful transport response has been validated and no GTFS feed has been generated. Preliminary findings are not a confirmed API contract.
+
+## Browser tests (2026-11-25)
+
+The user reports that GET requests to all three candidate URLs return `{"error":"The method specified in the request is not valid","code":405}`. The actual HTTP status and Allow header were not captured. POST is a hypothesis, not a confirmed method. Establish the read-only transport request contract from static code before testing.
