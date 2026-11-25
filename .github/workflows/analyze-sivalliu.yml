@@ -60,6 +60,37 @@ jobs:
           print('Transit symbol matches:',len(rows))
           print('\n'.join(rows[:300]))
           PY
+      - name: Extract transport request and model evidence
+        run: |
+          python3 - <<'PY'
+          import os, pathlib, re
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'blutter-out'
+          out=pathlib.Path('report')
+          base=root/'asm/sivalliu/view/mapa_home_screen/home_screen'
+          # Emit only transport-specific references, not arbitrary object-pool
+          # strings or unrelated account/payment credentials.
+          allow=re.compile(r'(?i)transport-network|find-route|show-buses|city_id|with_polyline|route_id|stop_id|route_short_name|stop_name|latitude|longitude|coordinates|polyline|start_stop|end_stop|time_user_stop|frequency|headway|duration|distance|content-type|application/json|authorization|bearer|\\bpost\\b|\\bget\\b|jsonencode|jsondecode|fromJson|\\b(?:routes|stops|vehicles|data|method|body|headers|action|type)\\b')
+          files=list(base.glob('repository/*.dart'))+list(base.glob('models/*.dart'))
+          for f in sorted(files):
+              if not re.search(r'transport|vehicle|route|stop',f.name,re.I):
+                  continue
+              rows=f.read_text(errors='replace').splitlines()
+              result=[]
+              for i,line in enumerate(rows,1):
+                  if re.search(r'^\\s*(?:class |// (?:addr|[A-Za-z_]+\\())',line):
+                      result.append(f'{i}: '+line[:250])
+                  elif allow.search(line):
+                      # Retain only allowlisted terms and instruction prefixes.
+                      matches=[m.group() for m in allow.finditer(line)]
+                      prefix=line.split(';')[0][:100]
+                      if 'String:' in prefix or '"' in prefix or "'" in prefix:
+                          prefix=''
+                      result.append(f'{i}: {prefix} | '+', '.join(matches))
+              (out/(f.stem+'-evidence.txt')).write_text('\\n'.join(result)+'\\n')
+              print('FILE',f.name,'evidence rows',len(result))
+              for row in result[:300]:
+                  print(row)
+          PY
       - name: Upload transit research index
         if: always()
         uses: actions/upload-artifact@v4
