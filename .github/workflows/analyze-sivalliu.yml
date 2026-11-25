@@ -91,6 +91,37 @@ jobs:
               for row in result[:300]:
                   print(row)
           PY
+      - name: Preserve transport POST assembly context
+        run: |
+          python3 - <<'PY'
+          import os, pathlib, re
+          base=pathlib.Path(os.environ['RUNNER_TEMP'])/'blutter-out/asm/sivalliu/view/mapa_home_screen/home_screen/repository'
+          for name, endpoint in [('repository_Transport.dart','transport-network'),('repository_vehicle_predictor.dart','show-buses')]:
+              rows=(base/name).read_text(errors='replace').splitlines()
+              hits=[i for i,s in enumerate(rows) if endpoint in s]
+              posts=[i for i,s in enumerate(rows) if 'r0 = post()' in s and any(0<=i-h<=25 for h in hits)]
+              assert posts, name
+              print('POST_COUNT',name,len(posts))
+              output=[]
+              for n,p in enumerate(posts,1):
+                  start=max(0,p-290)
+                  for i in range(p,start-1,-1):
+                      if 'async {' in rows[i] and '(' in rows[i]:
+                          start=i
+                          break
+                  print('REQUEST_CONTEXT',name,n,start+1,p+1)
+                  for i in range(start,min(len(rows),p+35)):
+                      line=rows[i]
+                      if re.search(r'token|authorization|bearer|password|secret|credential|api.?key|session|cookie',line,re.I):
+                          line=line.split(';')[0]+' [auth-related reference omitted]'
+                      else:
+                          line=re.sub(r'["\x27][A-Za-z0-9_./+=-]{24,}["\x27]','"[redacted]"',line)
+                      row=f'{i+1}: {line}'
+                      output.append(row)
+                      if 'String:' in line or 'r0 =' in line or 'r1 =' in line or 'Map' in line or 'mov ' in line or 'stur ' in line:
+                          print(row)
+              pathlib.Path('report',name+'-requests.txt').write_text('\n'.join(output)+'\n')
+          PY
       - name: Upload transit research index
         if: always()
         uses: actions/upload-artifact@v4
