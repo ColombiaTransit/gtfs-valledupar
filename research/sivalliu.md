@@ -35,3 +35,21 @@ The user reports that GET requests to all three candidate URLs return `{"error":
 Prioritize `transport-network` for static route, stop and shape data and `show-buses` for public realtime vehicle information and potential observed headways. `find-route` is out of scope: journey planning will be handled by OpenTripPlanner using our GTFS feed and OpenStreetMap. Do not investigate or call the journey-planning endpoint further. Payment functionality remains excluded.
 
 The initial Blutter analysis (run 45646676734) succeeded. The follow-up run 45647292820 is still in progress at the time of this update; its detailed request evidence has not yet been reviewed.
+
+## Request reconstruction — run 45649520378
+
+All seven POST call sites were extracted successfully. Object-pool annotations confirm the following request keys (values are not all resolved):
+
+| Response parser | Request keys | Explicit auth in caller |
+|---|---|---|
+| TransportModelRouteAndStop | city, with_stops, with_polyline, with_route, stops_and_route, lat, long | Bearer, runtime access token |
+| TransportModel | city, stops_and_route, lat, long | No explicit auth header |
+| TransportModelFilteredRoute | city, route_short_name, with_stops, with_polyline, with_route, lat, long | No explicit auth header |
+| PulylineRoute | city, route_short_name, with_polyline, lat, long | No explicit auth header |
+| VehicleToAllStop | latitud, longitud, stop_name, routes, heading | No explicit header argument |
+| VehicleModel | latitud, longitud, stop_name, routes | No explicit header argument |
+| VehicleToStopModel | latitud, longitud, stop_name, routes, heading | No explicit header argument |
+
+TransportModel caller hardcodes city=valledupar, interpolates GPS coordinates as strings and sets Accept: application/json. VehicleModel uses empty strings for latitud, longitud and stop_name, and constructs a single-element route list from a function argument. Global client interceptors and server-side authorization requirements are unverified.
+
+Candidate manual network probe (not yet executed): POST JSON {"city":"valledupar","stops_and_route":true,"lat":"10.4750","long":"-73.2500"}. Boolean true is a hypothesis pending inspection of the immediate instruction at assembly lines 398–400; coordinates are illustrative city-center values, not a user's location. No live response has been captured. Do not bypass authentication if required. Journey planning and payment remain excluded.
