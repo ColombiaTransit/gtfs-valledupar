@@ -118,7 +118,7 @@ jobs:
                           line=re.sub(r'["\x27][A-Za-z0-9_./+=-]{24,}["\x27]','"[redacted]"',line)
                       row=f'{i+1}: {line}'
                       output.append(row)
-                      if 'String:' in line or 'r0 =' in line or 'r1 =' in line or 'Map' in line or 'mov ' in line or 'stur ' in line:
+                      if '[pp+' in line or 'String:' in line or 'r0 =' in line or 'r1 =' in line or 'Map' in line or 'mov ' in line or 'stur ' in line:
                           print(row)
               pathlib.Path('report',name+'-requests.txt').write_text('\n'.join(output)+'\n')
           PY
