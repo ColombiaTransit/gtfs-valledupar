@@ -58,7 +58,8 @@
           "distance_m": 3.1,
           "along_m": 1745,
           "status": "inferred",
-          "stop_sequence": 4
+          "stop_sequence": 4,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21985,
@@ -71,7 +72,8 @@
           "distance_m": 3.7,
           "along_m": 2085.5,
           "status": "inferred",
-          "stop_sequence": 5
+          "stop_sequence": 5,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21986,
@@ -84,7 +86,8 @@
           "distance_m": 1.4,
           "along_m": 2437.9,
           "status": "inferred",
-          "stop_sequence": 6
+          "stop_sequence": 6,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21987,
@@ -97,7 +100,8 @@
           "distance_m": 2.3,
           "along_m": 2769.9,
           "status": "inferred",
-          "stop_sequence": 7
+          "stop_sequence": 7,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21979,
@@ -162,7 +166,8 @@
           "distance_m": 2.1,
           "along_m": 4658.1,
           "status": "inferred",
-          "stop_sequence": 12
+          "stop_sequence": 12,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21838,
@@ -191,19 +196,6 @@
           "stop_sequence": 14
         },
         {
-          "source_stop_id": 21975,
-          "stop_name": "CARRERA 23 CALLE 36",
-          "lat": 10.449315577327,
-          "lon": -73.251855333137,
-          "source": "parent",
-          "source_heading": "IDA",
-          "direction_match": true,
-          "distance_m": 39.2,
-          "along_m": 6864.3,
-          "status": "inferred",
-          "stop_sequence": 15
-        },
-        {
           "source_stop_id": 21991,
           "stop_name": "CARRERA 23 CALLE 34",
           "lat": 10.450064566415,
@@ -214,7 +206,8 @@
           "distance_m": 4.2,
           "along_m": 6912.5,
           "status": "inferred",
-          "stop_sequence": 16
+          "stop_sequence": 15,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21974,
@@ -227,7 +220,7 @@
           "distance_m": 2,
           "along_m": 7424.2,
           "status": "inferred",
-          "stop_sequence": 17
+          "stop_sequence": 16
         },
         {
           "source_stop_id": 22210,
@@ -240,7 +233,7 @@
           "distance_m": 2.9,
           "along_m": 8253.2,
           "status": "source_assigned",
-          "stop_sequence": 18
+          "stop_sequence": 17
         },
         {
           "source_stop_id": 21971,
@@ -253,7 +246,7 @@
           "distance_m": 12.5,
           "along_m": 8891.5,
           "status": "inferred",
-          "stop_sequence": 19
+          "stop_sequence": 18
         },
         {
           "source_stop_id": 21970,
@@ -266,7 +259,7 @@
           "distance_m": 8.2,
           "along_m": 9077.7,
           "status": "inferred",
-          "stop_sequence": 20
+          "stop_sequence": 19
         },
         {
           "source_stop_id": 21969,
@@ -279,46 +272,52 @@
           "distance_m": 19.1,
           "along_m": 9585.9,
           "status": "inferred",
-          "stop_sequence": 21
+          "stop_sequence": 20
         },
         {
-          "source_stop_id": 21998,
+          "source_stop_id": 21573,
           "stop_name": "G. HERNANDO DE SANTANA",
           "lat": 10.465471666383,
           "lon": -73.243255000276,
-          "source": "parent",
-          "source_heading": "REGRESO",
-          "direction_match": false,
+          "source": "other_route",
+          "source_heading": "IDA",
+          "direction_match": true,
           "distance_m": 3.7,
           "along_m": 10100.9,
           "status": "inferred",
-          "stop_sequence": 22
+          "stop_sequence": 21,
+          "previous_source_stop_id": 21998,
+          "review_note": "Exact coordinate/name duplicate with matching source heading; boarding side remains unverified."
         },
         {
-          "source_stop_id": 21999,
+          "source_stop_id": 21574,
           "stop_name": "FEDECAFÉ",
           "lat": 10.470394999941,
           "lon": -73.243496666864,
-          "source": "parent",
-          "source_heading": "REGRESO",
-          "direction_match": false,
+          "source": "other_route",
+          "source_heading": "IDA",
+          "direction_match": true,
           "distance_m": 1.6,
           "along_m": 10646.1,
           "status": "inferred",
-          "stop_sequence": 23
+          "stop_sequence": 22,
+          "previous_source_stop_id": 21999,
+          "review_note": "Exact coordinate/name duplicate with matching source heading; boarding side remains unverified."
         },
         {
-          "source_stop_id": 22001,
+          "source_stop_id": 21788,
           "stop_name": "CALLE 17 CARRERA 9",
           "lat": 10.472911666539,
           "lon": -73.245766666492,
-          "source": "parent",
-          "source_heading": "REGRESO",
-          "direction_match": false,
+          "source": "other_route",
+          "source_heading": "IDA",
+          "direction_match": true,
           "distance_m": 6.6,
           "along_m": 11337.7,
           "status": "inferred",
-          "stop_sequence": 24
+          "stop_sequence": 23,
+          "previous_source_stop_id": 22001,
+          "review_note": "Exact coordinate/name duplicate with matching source heading; boarding side remains unverified."
         },
         {
           "source_stop_id": 22211,
@@ -331,7 +330,8 @@
           "distance_m": 1,
           "along_m": 11806.1,
           "status": "inferred",
-          "stop_sequence": 25
+          "stop_sequence": 24,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         }
       ]
     },
@@ -389,7 +389,8 @@
           "distance_m": 2.3,
           "along_m": 1285.1,
           "status": "inferred",
-          "stop_sequence": 4
+          "stop_sequence": 4,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21793,
@@ -402,20 +403,23 @@
           "distance_m": 10.2,
           "along_m": 1522.9,
           "status": "inferred",
-          "stop_sequence": 5
+          "stop_sequence": 5,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
-          "source_stop_id": 21971,
+          "source_stop_id": 21882,
           "stop_name": "LA CEIBA",
           "lat": 10.463081811982,
           "lon": -73.251932354522,
-          "source": "parent",
-          "source_heading": "IDA",
-          "direction_match": false,
+          "source": "other_route",
+          "source_heading": "REGRESO",
+          "direction_match": true,
           "distance_m": 5.6,
           "along_m": 2098,
           "status": "inferred",
-          "stop_sequence": 6
+          "stop_sequence": 6,
+          "previous_source_stop_id": 21971,
+          "review_note": "Exact coordinate/name duplicate with matching source heading; boarding side remains unverified."
         },
         {
           "source_stop_id": 21995,
@@ -545,7 +549,8 @@
           "distance_m": 0.1,
           "along_m": 6860.2,
           "status": "inferred",
-          "stop_sequence": 16
+          "stop_sequence": 16,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 21816,
@@ -584,7 +589,8 @@
           "distance_m": 2.1,
           "along_m": 8440.5,
           "status": "inferred",
-          "stop_sequence": 19
+          "stop_sequence": 19,
+          "review_note": "Source heading is route-relative; retain as inferred candidate, boarding and road side unverified."
         },
         {
           "source_stop_id": 22214,
@@ -601,5 +607,40 @@
         }
       ]
     }
-  ]
+  ],
+  "review": {
+    "date": "2026-11-26",
+    "original_heading_mismatches": 15,
+    "identical_location_aliases_selected": [
+      [
+        "IDA",
+        21998,
+        21573
+      ],
+      [
+        "IDA",
+        21999,
+        21574
+      ],
+      [
+        "IDA",
+        22001,
+        21788
+      ],
+      [
+        "REGRESO",
+        21971,
+        21882
+      ]
+    ],
+    "excluded": [
+      {
+        "source_stop_id": 21975,
+        "direction": "go",
+        "reason": "39.2 m from shape; 48.2 m chainage separation from Calle 34 candidate at 4.2 m. Excluded conservatively, not proven duplicate."
+      }
+    ],
+    "remaining_heading_mismatches": 11,
+    "limitations": "Local signed lateral offsets do not establish curb access or service; no road-side validation, production approval or current service verification."
+  }
 }
