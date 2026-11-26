@@ -1,0 +1,41 @@
+name: Probe R513L travel times
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/probe_r513l_travel_times.py
+      - .github/workflows/probe-r513l-travel-times.yml
+      - research/r513l-candidate-patterns.json
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'shapely>=2,<3' 'pyproj>=3.5,<4' requests
+      - name: Synthetic geometry tests
+        run: |
+          python -m py_compile scripts/probe_r513l_travel_times.py
+          python scripts/probe_r513l_travel_times.py --self-test
+      - name: GraphHopper bus routing
+        env:
+          GRAPHHOPPER_URL: ${{ vars.GRAPHHOPPER_URL }}
+        run: |
+          if [ -z "$GRAPHHOPPER_URL" ]; then
+            echo "::error::Missing organization variable GRAPHHOPPER_URL"
+            exit 1
+          fi
+          echo "::add-mask::$GRAPHHOPPER_URL"
+          python scripts/probe_r513l_travel_times.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r513l-travel-times
+          path: build/r513l-travel-times/
+          retention-days: 7
