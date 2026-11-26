@@ -3,6 +3,8 @@ import json
 import math
 from pathlib import Path
 from collections import Counter
+import unicodedata
+from decimal import Decimal
 
 ROOT = Path("data/sivalliu")
 OUT = Path("geometry-review")
@@ -39,6 +41,18 @@ def project(stop, points, preferred=None):
 def main():
     OUT.mkdir(exist_ok=True)
     network = json.loads((ROOT/"network.json").read_text())["data"]
+    # Conservative exact-coordinate and normalized-name deduplication.
+    canonical = {}
+    stop_map = {}
+    physical = []
+    for s in sorted(network['stops'], key=lambda s:s['id']):
+        name = s['address'] if s['short_name'].strip() == 'TUR' else s['short_name']
+        name = ' '.join(unicodedata.normalize('NFC', name).split())
+        key = (Decimal(s['longitude']), Decimal(s['latitude']), name.upper())
+        if key not in canonical:
+            canonical[key] = s['id']
+            physical.append({'stop_id':s['id'], 'stop_name':name, 'stop_lat':s['latitude'], 'stop_lon':s['longitude']})
+        stop_map[s['id']] = canonical[key]
     report = []
     sequences = []
     seen = []
@@ -54,13 +68,15 @@ def main():
             q = project(s,go)
             i,p = q["index"],q["point"]
             go,back = go[:i]+[p],[p]+go[i:]+back
-        for heading,points in (("IDA",go),("REGRESO",back)):
+        # Tourist route: test complete loop as a single pattern, keeping all five stops.
+        patterns = (("LOOP",go+back),) if name == "R-TUR" else (("IDA",go),("REGRESO",back))
+        for heading,points in patterns:
             rows = []
             for stop in d["stops"]:
-                if stop["heading"] != heading:
+                if heading != "LOOP" and stop["heading"] != heading:
                     continue
                 q = project(stop,points,PREFERRED.get(stop["id"]) if heading=="IDA" else None)
-                rows.append({"stop_id":stop["id"],"stop_name":stop["short_name"],
+                rows.append({"source_stop_id":stop["id"],"stop_id":stop_map[stop["id"]],"stop_name":next(s["stop_name"] for s in physical if s["stop_id"]==stop_map[stop["id"]]),
                              "distance_m":round(q["distance"],3),"along_m":round(q["along"],3)})
                 seen.append(stop["id"])
             rows.sort(key=lambda r:r["along_m"])
@@ -71,12 +87,14 @@ def main():
                            "max_distance_m":max((r["distance_m"] for r in rows),default=None),
                            "exceptions":bad,"candidate_only":True})
             sequences.append({"route":name,"heading":heading,"shape":points,"stops":rows,
-                              "needs_review":bool(bad) or len(rows)<2})
+                              "needs_review":bool(bad) or len(rows)<2 or name=="R-TUR"})
     assert Counter(seen)==Counter(s["id"] for s in network["stops"])
-    summary = {"stop_count":len(seen),"outside_50m":sum(len(r["exceptions"]) for r in report),
+    summary = {"stop_count":len(seen),"physical_stop_count":len(physical),"outside_50m":sum(len(r["exceptions"]) for r in report),
                "directions":report,"status":"candidate geometry, not production GTFS"}
     (OUT/"report.json").write_text(json.dumps(summary,indent=2)+"\n")
     (OUT/"ordered-patterns.json").write_text(json.dumps(sequences,ensure_ascii=False)+"\n")
+    (OUT/"stops.json").write_text(json.dumps(physical,ensure_ascii=False,indent=2)+"\n")
+    (OUT/"stop-id-map.json").write_text(json.dumps(stop_map,indent=2)+"\n")
     print(json.dumps(summary,indent=2))
 
 if __name__ == "__main__":
