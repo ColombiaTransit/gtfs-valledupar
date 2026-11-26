@@ -1,0 +1,432 @@
+{
+  "source": "https://android.valliu.co/api/transport-network",
+  "collected_at": "2026-11-26T12:01:46.940266+00:00",
+  "network_sha256": "7c6643ceff429ccf55f9ee42d844e8fe3979eac63c3e06928382bec679d5b12a",
+  "network_stop_records": 669,
+  "missing_baseline": [],
+  "new_routes": [],
+  "routes": [
+    {
+      "name": "R-TUR",
+      "id": 448,
+      "sha256": "e517baee4f0300bee6c4d373433ee315cc98a00518783cb2076f64d5862287af",
+      "advertised_stops": "5",
+      "shape_points": {
+        "go": 185,
+        "back": 64
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 5
+      }
+    },
+    {
+      "name": "R100",
+      "id": 449,
+      "sha256": "6ce952c25733f293fc05f5117b8833fc20e9f44dd2bb51dc07e7d3b654e11056",
+      "advertised_stops": "86",
+      "shape_points": {
+        "go": 595,
+        "back": 874
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 85
+      }
+    },
+    {
+      "name": "R101",
+      "id": 450,
+      "sha256": "f3e4f441a860990df462bc562be393f1cff099fcea477a29e53b0c204604b557",
+      "advertised_stops": "83",
+      "shape_points": {
+        "go": 976,
+        "back": 526
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 82
+      }
+    },
+    {
+      "name": "R214",
+      "id": 451,
+      "sha256": "dd6582ba2fe9b1d24c8e99d38b9796003d15fbacd7a467771d30864d8cad3ff8",
+      "advertised_stops": "59",
+      "shape_points": {
+        "go": 534,
+        "back": 537
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 58
+      }
+    },
+    {
+      "name": "R313",
+      "id": 452,
+      "sha256": "94b5ecd89a9eaf08d5f0905ef1e9596efbc4a3fedec04d69041d01c479ee0739",
+      "advertised_stops": "54",
+      "shape_points": {
+        "go": 585,
+        "back": 413
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 54
+      }
+    },
+    {
+      "name": "R316",
+      "id": 453,
+      "sha256": "1160ebeaea7a435a7aebb53bece173ce515a1259cf7dfc9f94e8b5167135c2dd",
+      "advertised_stops": "52",
+      "shape_points": {
+        "go": 650,
+        "back": 496
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 52
+      }
+    },
+    {
+      "name": "R412",
+      "id": 454,
+      "sha256": "e8be4e8abbc9f4e1ec75bb77e3ec2873c282f23f5093c685c345eff8bfbccaf6",
+      "advertised_stops": "80",
+      "shape_points": {
+        "go": 767,
+        "back": 624
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 79
+      }
+    },
+    {
+      "name": "R513",
+      "id": 455,
+      "sha256": "f48f8dde3fb7348da9663f765c5fb18af0119c1b307e1d2630101ce56618d4cb",
+      "advertised_stops": "41",
+      "shape_points": {
+        "go": 406,
+        "back": 394
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 39
+      }
+    },
+    {
+      "name": "R561",
+      "id": 456,
+      "sha256": "b62d10233f128ad202eb40a7a6badd081f40061fbd62af7c1e9109d6066ac8d0",
+      "advertised_stops": "54",
+      "shape_points": {
+        "go": 446,
+        "back": 411
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 54
+      }
+    },
+    {
+      "name": "R562",
+      "id": 457,
+      "sha256": "b5beb3cb5a6399ed22ef12dd584ec097bc9f89cb6ac185ca8e0bbda07089bbbd",
+      "advertised_stops": "75",
+      "shape_points": {
+        "go": 651,
+        "back": 758
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 75
+      }
+    },
+    {
+      "name": "R515",
+      "id": 458,
+      "sha256": "636d9742f1d4ef319681d63ec62fb603c86fe818d7d5a29dafe10534efecae9f",
+      "advertised_stops": "58",
+      "shape_points": {
+        "go": 691,
+        "back": 724
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 58
+      }
+    },
+    {
+      "name": "R515N",
+      "id": 459,
+      "sha256": "d4f2950ec4bcec0995ac4a12995421fffcc00bd20a486f8bd4d73d53363b6365",
+      "advertised_stops": "5",
+      "shape_points": {
+        "go": 107,
+        "back": 101
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 7
+      }
+    },
+    {
+      "name": "R313L",
+      "id": 460,
+      "sha256": "cdbb99d3fb00cc8f1eec05ad8e9214528241f46199a2a536962150dab21350db",
+      "advertised_stops": "4",
+      "shape_points": {
+        "go": 140,
+        "back": 104
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 7
+      }
+    },
+    {
+      "name": "R513L",
+      "id": 461,
+      "sha256": "e756a7b596da23bf1e6f8346dee08aa43001b34cd4885db6baf8d646f3f5f5e1",
+      "advertised_stops": "4",
+      "shape_points": {
+        "go": 76,
+        "back": 80
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 7
+      }
+    },
+    {
+      "name": "R561DA",
+      "id": 462,
+      "sha256": "a42839d2f8b3b9702b288ca5182d29937f155a5e92a90f1f847a1e06d200c238",
+      "advertised_stops": "7",
+      "shape_points": {
+        "go": 93,
+        "back": 82
+      },
+      "response_keys": [
+        "color",
+        "end_stop",
+        "id",
+        "long_name",
+        "network_id",
+        "open_time",
+        "polyline",
+        "short_name",
+        "start_stop",
+        "stops",
+        "stops_number"
+      ],
+      "list_counts": {
+        "open_time": 2,
+        "polyline": 1,
+        "stops": 7
+      }
+    }
+  ],
+  "errors": [],
+  "complete": true
+}
