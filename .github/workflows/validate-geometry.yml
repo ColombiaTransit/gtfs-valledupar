@@ -1,0 +1,26 @@
+name: Validate SIVAlliu geometry
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/validate_geometry.py
+      - .github/workflows/validate-geometry.yml
+      - data/sivalliu/**
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate geometry and normalize stops
+        run: |
+          python3 -m py_compile scripts/validate_geometry.py
+          python3 scripts/validate_geometry.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sivalliu-geometry-review
+          path: geometry-review/
+          retention-days: 30
